@@ -1,0 +1,48 @@
+{
+  "login": {
+    "title": "Login to InsideChurch",
+    "email": "Email",
+    "password": "Password",
+    "button": "Login",
+    "invalid_credentials": "Invalid credentials. Please try again.",
+    "unexpected_error": "An unexpected error occurred. Please try again later."
+  },
+  "dashboard": {
+    "title": "Welcome to the Dashboard!",
+    "logged_in_message": "You have successfully logged in.",
+    "admin_actions": "Admin Actions",
+    "create_tenant_link": "Create New Tenant",
+    "logout_button": "Logout"
+  },
+  "tenants": {
+    "title": "Tenant Management",
+    "create_new_title": "Create New Tenant",
+    "form": {
+      "name_label": "Tenant Name:",
+      "type_label": "Tenant Type:",
+      "type_placeholder": "e.g., Main, Branch, Ministry",
+      "parent_id_label": "Parent ID (Optional UUID):",
+      "create_button": "Create Tenant"
+    },
+    "messages": {
+      "success": "Tenant '{name}' (ID: {id}) created successfully!",
+      "error_auth": "Authentication Error: {message}",
+      "error_input": "Invalid input: {message}",
+      "error_server": "Server Error: {message}",
+      "error_network": "Network Error: Could not reach the backend.",
+      "access_denied": "Access Denied: Only Global Super Admins can manage tenants."
+    },
+    "list": {
+      "title": "Existing Tenants",
+      "loading": "Loading tenants...",
+      "no_tenants": "No tenants created yet.",
+      "name_label": "Name:",
+      "type_label": "Type:",
+      "id_label": "ID:",
+      "parent_label": "Parent:",
+      "parent_none": "(None)",
+      "created_label": "Created:"
+    },
+    "back_to_dashboard": "Back to Dashboard"
+  }
+}

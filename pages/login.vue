@@ -1,19 +1,20 @@
 <template>
-    <div class="login-container">
-        <h1>Login to InsideChurch</h1>
-        <form @submit.prevent="handleLogin">
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" v-model="password" required>
-        </div>
-        <button type="submit">Login</button>
-        </form>
-        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-    </div>
+  <div class="login-container">
+    <h1>{{ $t('login.title') }}</h1>
+    <form @submit.prevent="handleLogin">
+      <div class="form-group">
+        <label for="email">{{ $t('login.email') }}:</label>
+        <input type="email" id="email" v-model="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">{{ $t('login.password') }}:</label>
+        <input type="password" id="password" v-model="password" required>
+      </div>
+      <button type="submit">{{ $t('login.button') }}</button>
+    </form>
+    <p v-if="errorMessage === 'Invalid credentials. Please try again.'" class="error-message">{{ $t('login.invalid_credentials') }}</p>
+    <p v-else-if="errorMessage" class="error-message">{{ $t('login.unexpected_error') }}</p>
+  </div>
 </template>
   
 <script setup>

@@ -1,0 +1,48 @@
+{
+  "login": {
+    "title": "Acessar InsideChurch",
+    "email": "Email",
+    "password": "Senha",
+    "button": "Acessar",
+    "invalid_credentials": "Credenciais inválidas. Por favor, tente novamente.",
+    "unexpected_error": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde."
+  },
+  "dashboard": {
+    "title": "Bem-vindo ao Painel!",
+    "logged_in_message": "Você acessou com sucesso.",
+    "admin_actions": "Ações de Administrador",
+    "create_tenant_link": "Criar Nova Igreja/Organização",
+    "logout_button": "Sair"
+  },
+  "tenants": {
+    "title": "Gerenciamento de Igrejas/Organizações",
+    "create_new_title": "Criar Nova Igreja/Organização",
+    "form": {
+      "name_label": "Nome da Igreja/Organização:",
+      "type_label": "Tipo da Igreja/Organização:",
+      "type_placeholder": "Ex: Matriz, Filial, Ministério",
+      "parent_id_label": "ID da Igreja/Organização Pai (Opcional UUID):",
+      "create_button": "Criar Igreja/Organização"
+    },
+    "messages": {
+      "success": "Igreja/Organização '{name}' (ID: {id}) criada com sucesso!",
+      "error_auth": "Erro de Autenticação: {message}",
+      "error_input": "Entrada inválida: {message}",
+      "error_server": "Erro no Servidor: {message}",
+      "error_network": "Erro de Rede: Não foi possível conectar ao backend.",
+      "access_denied": "Acesso negado: Somente Super Admins Globais podem gerenciar igrejas/organizações."
+    },
+    "list": {
+      "title": "Igrejas/Organizações Existentes",
+      "loading": "Carregando igrejas/organizações...",
+      "no_tenants": "Nenhuma igreja/organização criada ainda.",
+      "name_label": "Nome:",
+      "type_label": "Tipo:",
+      "id_label": "ID:",
+      "parent_label": "Pai:",
+      "parent_none": "(Nenhum)",
+      "created_label": "Criado em:"
+    },
+    "back_to_dashboard": "Voltar para o Painel"
+  }
+}
