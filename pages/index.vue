@@ -1,26 +1,21 @@
 <template>
-    <div>
-      <h1>InsideChurch Frontend</h1>
-      <p>{{ message }}</p>
-      <button @click="fetchBackendMessage">Fetch Message</button>
-      <br><br>
-      <NuxtLink to="/login">Go to Login</NuxtLink>
-    </div>
-  </template>
-  
+  <div>
+    <p>Redirecting to login...</p>
+  </div>
+</template>
+
 <script setup>
-  import { ref } from 'vue';
-  import axios from 'axios';
-  
-  const message = ref('Waiting for backend...');
-  
-  const fetchBackendMessage = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/');
-      message.value = response.data;
-    } catch (error) {
-      console.error('Error fetching from backend:', error);
-      message.value = 'Error connecting to backend.';
-    }
-  };
+navigateTo('/login', { external: false, redirectCode: 302 });
 </script>
+
+<style scoped>
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+}
+</style>

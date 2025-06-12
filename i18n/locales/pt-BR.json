@@ -1,48 +1,71 @@
 {
   "login": {
-    "title": "Acessar InsideChurch",
-    "email": "Email",
+    "title": "Login",
+    "email": "E-mail",
     "password": "Senha",
-    "button": "Acessar",
+    "button": "Entrar",
+    "logging_in": "Entrando...",
+    "error": "Falha no login. Verifique suas credenciais.",
+    "success": "Login bem-sucedido!",
+    "logout": "Sair",
     "invalid_credentials": "Credenciais inválidas. Por favor, tente novamente.",
     "unexpected_error": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde."
   },
   "dashboard": {
-    "title": "Bem-vindo ao Painel!",
-    "logged_in_message": "Você acessou com sucesso.",
-    "admin_actions": "Ações de Administrador",
-    "create_tenant_link": "Criar Nova Igreja/Organização",
-    "logout_button": "Sair"
+    "welcome": "Bem-vindo",
+    "title": "Painel",
+    "logged_in_message": "Você está logado!",
+    "logout_button": "Sair",
+    "globalAdminDashboard": "Painel do Administrador Global",
+    "tenantAdminDashboard": "Painel do Administrador da Organização",
+    "memberDashboard": "Painel do Membro"
   },
   "tenants": {
-    "title": "Gerenciamento de Igrejas/Organizações",
-    "create_new_title": "Criar Nova Igreja/Organização",
-    "form": {
-      "name_label": "Nome da Igreja/Organização:",
-      "type_label": "Tipo da Igreja/Organização:",
-      "type_placeholder": "Ex: Matriz, Filial, Ministério",
-      "parent_id_label": "ID da Igreja/Organização Pai (Opcional UUID):",
-      "create_button": "Criar Igreja/Organização"
-    },
-    "messages": {
-      "success": "Igreja/Organização '{name}' (ID: {id}) criada com sucesso!",
-      "error_auth": "Erro de Autenticação: {message}",
-      "error_input": "Entrada inválida: {message}",
-      "error_server": "Erro no Servidor: {message}",
-      "error_network": "Erro de Rede: Não foi possível conectar ao backend.",
-      "access_denied": "Acesso negado: Somente Super Admins Globais podem gerenciar igrejas/organizações."
-    },
-    "list": {
-      "title": "Igrejas/Organizações Existentes",
-      "loading": "Carregando igrejas/organizações...",
-      "no_tenants": "Nenhuma igreja/organização criada ainda.",
-      "name_label": "Nome:",
-      "type_label": "Tipo:",
-      "id_label": "ID:",
-      "parent_label": "Pai:",
-      "parent_none": "(Nenhum)",
-      "created_label": "Criado em:"
-    },
-    "back_to_dashboard": "Voltar para o Painel"
+    "title": "Gerenciar Organizações",
+    "createTenant": "Criar Nova Organização",
+    "name": "Nome da Organização",
+    "type": "Tipo da Organização",
+    "parent": "Organização Pai (opcional)",
+    "selectType": "Selecionar Tipo",
+    "chooseParent": "Escolher Organização Pai",
+    "createButton": "Criar Organização",
+    "creating": "Criando...",
+    "tenantCreatedSuccess": "Organização '{name}' criada com sucesso!",
+    "listTenants": "Organizações Existentes",
+    "noTenants": "Nenhuma organização encontrada.",
+    "id": "ID",
+    "createdAt": "Criado Em",
+    "updatedAt": "Atualizado Em",
+    "parentId": "ID da Organização Pai",
+    "parentName": "Nome da Organização Pai",
+    "typeMain": "Matriz",
+    "typeBranch": "Filial",
+    "typeCongregation": "Congregação",
+    "typeMinistry": "Ministério"
+  },
+  "tenantAdmins": {
+    "title": "Gerenciar Administradores de Organização",
+    "createAdmin": "Criar Novo Administrador de Organização",
+    "email": "E-mail",
+    "name": "Nome",
+    "password": "Senha",
+    "selectTenant": "Selecionar Organização Associada",
+    "chooseTenant": "Escolha uma Organização",
+    "createButton": "Criar Admin da Organização",
+    "creating": "Criando...",
+    "adminCreatedSuccess": "Administrador da Organização '{email}' criado com sucesso!",
+    "existingAdmins": "Administradores de Organização Existentes",
+    "listComingSoon": "Lista de administradores de organização existentes em breve."
+  },
+  "nav": {
+    "dashboard": "Painel",
+    "tenants": "Organizações",
+    "tenantAdmins": "Admins da Organização"
+  },
+  "errors": {
+    "authorizationError": "Erro de autorização: Por favor, faça login novamente.",
+    "failedToFetchTenants": "Falha ao buscar organizações.",
+    "failedToCreateAdmin": "Falha ao criar administrador da organização.",
+    "notLoggedIn": "Não logado. Redirecionando para o login."
   }
 }

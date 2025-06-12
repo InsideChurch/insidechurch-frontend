@@ -1,48 +1,71 @@
 {
   "login": {
-    "title": "Login to InsideChurch",
+    "title": "Login",
     "email": "Email",
     "password": "Password",
     "button": "Login",
-    "invalid_credentials": "Invalid credentials. Please try again.",
-    "unexpected_error": "An unexpected error occurred. Please try again later."
+    "logging_in": "Logging in...", 
+    "error": "Login failed. Please check your credentials.", 
+    "success": "Login successful!",
+    "logout": "Logout",
+    "invalid_credentials": "Invalid credentials. Please try again.", 
+    "unexpected_error": "An unexpected error occurred. Please try again later." 
   },
   "dashboard": {
-    "title": "Welcome to the Dashboard!",
-    "logged_in_message": "You have successfully logged in.",
-    "admin_actions": "Admin Actions",
-    "create_tenant_link": "Create New Tenant",
-    "logout_button": "Logout"
+    "welcome": "Welcome",
+    "title": "Dashboard",
+    "logged_in_message": "You are logged in!",
+    "logout_button": "Logout",
+    "globalAdminDashboard": "Global Admin Dashboard",
+    "tenantAdminDashboard": "Tenant Admin Dashboard",
+    "memberDashboard": "Member Dashboard"
   },
   "tenants": {
-    "title": "Tenant Management",
-    "create_new_title": "Create New Tenant",
-    "form": {
-      "name_label": "Tenant Name:",
-      "type_label": "Tenant Type:",
-      "type_placeholder": "e.g., Main, Branch, Ministry",
-      "parent_id_label": "Parent ID (Optional UUID):",
-      "create_button": "Create Tenant"
-    },
-    "messages": {
-      "success": "Tenant '{name}' (ID: {id}) created successfully!",
-      "error_auth": "Authentication Error: {message}",
-      "error_input": "Invalid input: {message}",
-      "error_server": "Server Error: {message}",
-      "error_network": "Network Error: Could not reach the backend.",
-      "access_denied": "Access Denied: Only Global Super Admins can manage tenants."
-    },
-    "list": {
-      "title": "Existing Tenants",
-      "loading": "Loading tenants...",
-      "no_tenants": "No tenants created yet.",
-      "name_label": "Name:",
-      "type_label": "Type:",
-      "id_label": "ID:",
-      "parent_label": "Parent:",
-      "parent_none": "(None)",
-      "created_label": "Created:"
-    },
-    "back_to_dashboard": "Back to Dashboard"
+    "title": "Manage Tenants",
+    "createTenant": "Create New Tenant",
+    "name": "Tenant Name",
+    "type": "Tenant Type",
+    "parent": "Parent Tenant (optional)",
+    "selectType": "Select Type",
+    "chooseParent": "Choose Parent",
+    "createButton": "Create Tenant",
+    "creating": "Creating...",
+    "tenantCreatedSuccess": "Tenant '{name}' created successfully!",
+    "listTenants": "Existing Tenants",
+    "noTenants": "No tenants found.",
+    "id": "ID",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "parentId": "Parent ID",
+    "parentName": "Parent Name",
+    "typeMain": "Main",
+    "typeBranch": "Branch",
+    "typeCongregation": "Congregation",
+    "typeMinistry": "Ministry"
+  },
+  "tenantAdmins": {
+    "title": "Manage Tenant Super Admins",
+    "createAdmin": "Create New Tenant Super Admin",
+    "email": "Email",
+    "name": "Name",
+    "password": "Password",
+    "selectTenant": "Select Associated Tenant",
+    "chooseTenant": "Choose a Tenant",
+    "createButton": "Create Tenant Admin",
+    "creating": "Creating...",
+    "adminCreatedSuccess": "Tenant Super Admin '{email}' created successfully!",
+    "existingAdmins": "Existing Tenant Super Admins",
+    "listComingSoon": "List of existing tenant super admins coming soon."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "tenants": "Tenants",
+    "tenantAdmins": "Tenant Admins"
+  },
+  "errors": {
+    "authorizationError": "Authorization error: Please log in again.",
+    "failedToFetchTenants": "Failed to fetch tenants.",
+    "failedToCreateAdmin": "Failed to create tenant super admin.",
+    "notLoggedIn": "Not logged in. Redirecting to login."
   }
 }
