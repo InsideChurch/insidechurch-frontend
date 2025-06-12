@@ -8,12 +8,15 @@
       <p><strong>{{ $t('dashboard.email_label') }}:</strong> {{ authStore.userEmail }}</p>
       <p><strong>{{ $t('dashboard.role_label') }}:</strong> {{ authStore.userRole }}</p>
     </div>
+    
+    <br>
 
-    <div v-if="isGlobalSuperAdmin" class="admin-actions-section">
+    <div v-if="authStore.isGlobalSuperAdmin" class="admin-actions-section">
       <h2>{{ $t('dashboard.admin_actions') }}</h2>
       <div class="action-links">
         <NuxtLink to="/tenants" class="button">{{ $t('dashboard.create_tenant_link') }}</NuxtLink>
-        </div>
+        <NuxtLink to="/tenants-admins" class="button">{{ $t('dashboard.create_tenant_admin_link') }}</NuxtLink>
+      </div>
     </div>
 
     <br>

@@ -18,6 +18,7 @@
     "logout_button": "Logout",
     "admin_actions": "Admin Actions",
     "create_tenant_link": "Create New Organization",
+    "create_tenant_admin_link": "Create New Organization Admin",
     "welcome_user": "Welcome, {name}!",
     "email_label": "Email",
     "role_label": "Role",

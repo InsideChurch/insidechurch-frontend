@@ -18,6 +18,7 @@
     "logout_button": "Sair",
     "admin_actions": "Ações de Administrador",
     "create_tenant_link": "Criar Nova Organização",
+    "create_tenant_admin_link": "Criar Novo Admin de Organização",
     "welcome_user": "Bem-vindo, {name}!",
     "email_label": "Email",
     "role_label": "Cargo",

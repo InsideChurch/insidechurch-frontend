@@ -21,15 +21,11 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = authStore.isLoggedIn;
 
-    console.log(`[Auth Middleware] Navigating to: ${to.path}, Auth Required: ${authRequired}, Logged In: ${loggedIn}`);
-
     if (authRequired && !loggedIn) {
-      console.log("[Auth Middleware] Not logged in. Redirecting to login.");
       return navigateTo('/login'); 
     }
 
     if (loggedIn && (to.path === '/login' || to.path === '/')) {
-      console.log("[Auth Middleware] Already logged in. Redirecting to dashboard.");
       return navigateTo('/dashboard');
     }
   }

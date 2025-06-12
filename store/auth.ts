@@ -58,10 +58,17 @@ export const useAuthStore = defineStore('auth', {
         const userEmail = localStorage.getItem('user_email');
         const userName = localStorage.getItem('user_name');
         const userRole = localStorage.getItem('user_role');
-        const isGlobalSuperAdmin = localStorage.getItem('is_global_super_admin') === 'true';
+        const isGlobalSuperAdminString = localStorage.getItem('is_global_super_admin');
 
+        console.log('[Auth Store Init] isGlobalSuperAdminString from localStorage:', isGlobalSuperAdminString);
+        const isGlobalSuperAdmin = isGlobalSuperAdminString === 'true'; 
+        console.log('[Auth Store Init] isGlobalSuperAdmin (boolean) after conversion:', isGlobalSuperAdmin);
+        
         if (token && userEmail && userName && userRole) {
           this.setAuth(token, userEmail, userName, userRole, isGlobalSuperAdmin);
+        }
+        else {
+          this.clearAuth();
         }
       }
     }
