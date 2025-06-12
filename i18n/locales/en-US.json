@@ -48,7 +48,9 @@
     "typeMain": "Main",
     "typeBranch": "Branch",
     "typeCongregation": "Congregation",
-    "typeMinistry": "Ministry"
+    "typeMinistry": "Ministry",
+    "create_tenant_link": "Manage Organizations",
+    "create_tenant_admin_link": "Manage Organization Admins"
   },
   "tenantAdmins": {
     "title": "Manage Tenant Super Admins",

@@ -48,7 +48,9 @@
     "typeMain": "Matriz",
     "typeBranch": "Filial",
     "typeCongregation": "Congregação",
-    "typeMinistry": "Ministério"
+    "typeMinistry": "Ministério",
+    "create_tenant_link": "Gerenciar Organizações",
+    "create_tenant_admin_link": "Gerenciar Admins de Organização"
   },
   "tenantAdmins": {
     "title": "Gerenciar Administradores de Organização",

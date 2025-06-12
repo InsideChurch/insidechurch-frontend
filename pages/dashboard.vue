@@ -4,9 +4,9 @@
     <p>{{ $t('dashboard.logged_in_message') }}</p>
 
     <div class="user-info-section">
-      <h2>{{ $t('dashboard.welcome_user', { name: userName }) }}</h2>
-      <p><strong>{{ $t('dashboard.email_label') }}:</strong> {{ userEmail }}</p>
-      <p><strong>{{ $t('dashboard.role_label') }}:</strong> {{ userRole }}</p>
+      <h2>{{ $t('dashboard.welcome_user', { name: authStore.userName }) }}</h2>
+      <p><strong>{{ $t('dashboard.email_label') }}:</strong> {{ authStore.userEmail }}</p>
+      <p><strong>{{ $t('dashboard.role_label') }}:</strong> {{ authStore.userRole }}</p>
     </div>
 
     <div v-if="isGlobalSuperAdmin" class="admin-actions-section">
@@ -19,43 +19,26 @@
     <br>
 
     <div class="general-actions-section">
-      <button @click="logout" class="logout-button">{{ $t('dashboard.logout_button') }}</button>
+      <button @click="handleLogout" class="logout-button">{{ $t('dashboard.logout_button') }}</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '~/store/auth';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
+const authStore = useAuthStore(); 
 const router = useRouter();
-const isGlobalSuperAdmin = ref(false);
-const userName = ref('');
-const userEmail = ref('');
-const userRole = ref('');
 
-onMounted(() => {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  if (currentUser) {
-    userName.value = currentUser.name || '';
-    userEmail.value = currentUser.email || '';
-    userRole.value = currentUser.role || ''; 
-
-    if (currentUser.is_global_super_admin) {
-      isGlobalSuperAdmin.value = true;
-    }
-  } else {
-    console.warn("currentUser not found in localStorage. Redirecting to login.");
-    router.push('/login');
-  }
-});
-
-const logout = () => {
-  localStorage.removeItem('authToken');
-  localStorage.removeItem('currentUser');
+const handleLogout = () => {
+  authStore.clearAuth();
   router.push('/login');
 };
 </script>
+
 
 <style scoped>
 .dashboard-container {
