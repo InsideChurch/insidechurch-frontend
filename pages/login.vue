@@ -18,37 +18,51 @@
 </template>
   
 <script setup>
-  import { ref } from 'vue';
-  import axios from 'axios';
-  
-  const email = ref('');
-  const password = ref('');
-  const errorMessage = ref('');
-  
-  const handleLogin = async () => {
-    errorMessage.value = '';
-    try {
-      const response = await axios.post('http://localhost:8080/login', {
-        email: email.value,
-        password: password.value,
-      });
-  
-      const { token, user } = response.data;
-  
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('currentUser', JSON.stringify(user)); 
-  
-      navigateTo('/dashboard');
-  
-    } catch (error) {
-      console.error('Login error:', error);
-      if (error.response && error.response.status === 401) {
-        errorMessage.value = 'Invalid credentials. Please try again.';
-      } else {
-        errorMessage.value = 'An unexpected error occurred. Please try again later.';
-      }
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '~/store/auth'
+
+const email = ref('');
+const password = ref('');
+const errorMessage = ref('');
+
+const authStore = useAuthStore();
+
+const handleLogin = async () => {
+  errorMessage.value = '';
+  try {
+    const response = await axios.post('http://localhost:8080/login', {
+      email: email.value,
+      password: password.value,
+    });
+
+    const {
+      token,
+      is_global_super_admin,
+      user_email,
+      user_name,
+      user_role
+    } = response.data;
+
+    authStore.setAuth(
+      token,
+      user_email,
+      user_name,
+      user_role,
+      is_global_super_admin
+    );
+
+    navigateTo('/dashboard');
+  } catch (error) {
+    console.error('Login error:', error);
+    if (error.response && error.response.status === 401) {
+      errorMessage.value = 'Invalid credentials. Please try again.';
+    } else {
+      errorMessage.value = 'An unexpected error occurred. Please try again later.';
     }
-  };
+  }
+};
 </script>
   
 <style scoped>

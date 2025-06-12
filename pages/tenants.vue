@@ -31,14 +31,15 @@
               <option value="Ministry">{{ $t('tenants.typeMinistry') }}</option>
             </select>
           </div>
-          <div class="col-span-1 md:col-span-2">
+          <div class="col-span-1 md:col-span-2" v-if="newTenant.type !== 'Main'">
             <label for="parentTenant" class="block text-gray-700 text-sm font-bold mb-2">{{ $t('tenants.parent') }}:</label>
             <select
               id="parentTenant"
               v-model="newTenant.parent_id"
               class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              :required="newTenant.type !== 'Main'"
             >
-              <option value="">{{ $t('tenants.chooseParent') }}</option>
+              <option value="" disabled>{{ $t('tenants.chooseParent') }}</option>
               <option v-for="tenant in tenants" :key="tenant.id" :value="tenant.id">
                 {{ tenant.name }}
               </option>
@@ -70,9 +71,6 @@
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                {{ $t('tenants.id') }}
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 {{ $t('tenants.name') }}
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -91,7 +89,6 @@
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <tr v-for="tenant in tenants" :key="tenant.id">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ tenant.id }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ tenant.name }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ tenant.type }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -128,11 +125,15 @@ const tenantsError = ref('');
 const newTenant = ref({
   name: '',
   type: '',
-  parent_id: null 
+  parent_id: '' 
 });
 const creatingTenant = ref(false);
 const tenantSuccessMessage = ref('');
 const tenantErrorMessage = ref('');
+
+watch(() => newTenant.value.type, (newType) => {
+  if (newType === 'Main') newTenant.value.parent_id = null;
+});
 
 const fetchTenants = async (token) => {
   loadingTenants.value = true;
@@ -156,7 +157,16 @@ const fetchTenants = async (token) => {
       throw new Error(errorData.error || t('errors.failedToFetchTenants'));
     }
 
-    tenants.value = await response.json();
+    const responseData = await response.json();
+
+    if (Array.isArray(responseData)) {
+      tenants.value = responseData; 
+    } else if (typeof responseData === 'object' && responseData !== null && Object.keys(responseData).length === 0) {
+      tenants.value = [];
+    } else {
+      console.warn('Unexpected API response format for tenants:', responseData);
+      tenants.value = []; 
+    }
   } catch (error) {
     console.error('Error fetching tenants:', error);
     tenantsError.value = error.message || t('errors.failedToFetchTenants');
@@ -179,8 +189,12 @@ const createTenant = async () => {
     }
 
     const payload = { ...newTenant.value };
-    if (payload.parent_id === '') {
-      payload.parent_id = null;
+    if (payload.type === 'Main') {
+      payload.parent_id = null; 
+    } else if (payload.type !== 'Main' && !payload.parent_id) {
+      tenantErrorMessage.value = t('tenants.parentRequired');
+      creatingTenant.value = false;
+      return;
     }
 
     const response = await fetch('http://localhost:8080/api/tenants', {
